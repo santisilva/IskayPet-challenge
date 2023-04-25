@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "cwd": "babelrc",
+        "root": ["./src"],
+        "extensions": [".js", ".ios.js", ".android.js"],
+        "alias": {
+          "@api": "./src/api",
+          "@components": "./src/components",
+          "@navigator": "./src/navigator",
+          "@services": "./src/services",
+          "@views": "./src/views"
+        }
+      }
+    ]
+  ]
+}

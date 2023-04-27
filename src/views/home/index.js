@@ -1,35 +1,46 @@
 import React, {useEffect} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import {resetStores, getStores} from '@services/stores';
+import {useNavigation} from '@react-navigation/native';
+import {Card} from '@components';
 
 const Home = () => {
+  const navigation = useNavigation();
+
   useEffect(() => {
     /*
     resetStores();
-    getStores().then((response) => {
+    getStores().then(response => {
       console.log(response.data);
-    }
-    );
+    });
     */
   }, []);
 
+  const goToStore = store => {
+    navigation.navigate('Store', {store});
+  };
+
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{paddingBottom: 80,paddingHorizontal:30}}>
       {stores.map(store => (
-        <View style={styles.containerTienda} key={store.id}>
+        <Card
+          key={store.id}
+          onPress={() => {
+            goToStore(store);
+          }}>
           <Text style={styles.titleTienda}>{store.name}</Text>
-          <ScrollView horizontal={true}>
-            {store.tasks.map(task => (
-              <View key={task.id}>
-                <Text>{task.name}</Text>
-                <Text>{task.description}</Text>
-                <Text>{task.status}</Text>
-              </View>
-            ))}
-          </ScrollView>
-        </View>
+        </Card>
       ))}
-    </View>
+    </ScrollView>
   );
 };
 
@@ -39,11 +50,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 20,
     paddingTop: 50,
-  },
-  containerTienda: {
-    marginBottom: 30,
   },
 
   titleTienda: {
@@ -62,19 +69,31 @@ const stores = [
         id: 1,
         name: 'Tarea 1',
         description: 'Descripcion de la tarea 1',
-        status: 'pendiente',
+        status: 'Pendiente',
       },
       {
         id: 2,
         name: 'Tarea 2',
         description: 'Descripcion de la tarea 2',
-        status: 'pendiente',
+        status: 'En proceso',
       },
       {
         id: 3,
         name: 'Tarea 3',
         description: 'Descripcion de la tarea 3',
-        status: 'pendiente',
+        status: 'Terminada',
+      },
+      {
+        id: 4,
+        name: 'Tarea 4',
+        description: 'Descripcion de la tarea 4',
+        status: 'Pendiente',
+      },
+      {
+        id: 5,
+        name: 'Tarea 5',
+        description: 'Descripcion de la tarea 5',
+        status: 'Pendiente',
       },
     ],
   },
@@ -86,19 +105,19 @@ const stores = [
         id: 1,
         name: 'Tarea 1',
         description: 'Descripcion de la tarea 1',
-        status: 'pendiente',
+        status: 'Pendiente',
       },
       {
         id: 2,
         name: 'Tarea 2',
         description: 'Descripcion de la tarea 2',
-        status: 'pendiente',
+        status: 'Pendiente',
       },
       {
         id: 3,
         name: 'Tarea 3',
         description: 'Descripcion de la tarea 3',
-        status: 'pendiente',
+        status: 'Pendiente',
       },
     ],
   },
@@ -110,19 +129,67 @@ const stores = [
         id: 1,
         name: 'Tarea 1',
         description: 'Descripcion de la tarea 1',
-        status: 'pendiente',
+        status: 'Pendiente',
       },
       {
         id: 2,
         name: 'Tarea 2',
         description: 'Descripcion de la tarea 2',
-        status: 'pendiente',
+        status: 'Pendiente',
       },
       {
         id: 3,
         name: 'Tarea 3',
         description: 'Descripcion de la tarea 3',
-        status: 'pendiente',
+        status: 'Pendiente',
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: 'Tienda 4',
+    tasks: [
+      {
+        id: 1,
+        name: 'Tarea 1',
+        description: 'Descripcion de la tarea 1',
+        status: 'Pendiente',
+      },
+      {
+        id: 2,
+        name: 'Tarea 2',
+        description: 'Descripcion de la tarea 2',
+        status: 'Pendiente',
+      },
+      {
+        id: 3,
+        name: 'Tarea 3',
+        description: 'Descripcion de la tarea 3',
+        status: 'Pendiente',
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: 'Tienda 5',
+    tasks: [
+      {
+        id: 1,
+        name: 'Tarea 1',
+        description: 'Descripcion de la tarea 1',
+        status: 'Pendiente',
+      },
+      {
+        id: 2,
+        name: 'Tarea 2',
+        description: 'Descripcion de la tarea 2',
+        status: 'Pendiente',
+      },
+      {
+        id: 3,
+        name: 'Tarea 3',
+        description: 'Descripcion de la tarea 3',
+        status: 'Pendiente',
       },
     ],
   },

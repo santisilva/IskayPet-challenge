@@ -17,12 +17,12 @@ const Map = () => {
         style={{width: '100%', height: Dimensions.get('window').height - 200}}
         initialRegion={{
           //valencia
-          latitude: '39.46975',
-          longitude: '-0.37739',
-          latitudeDelta: '0.015',
-          longitudeDelta: '0.0121',
+          latitude: 39.46975,
+          longitude: -0.37739,
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121,
         }}>
-        {params.locations.map((location, index) => (
+        {params.location.map((location, index) => (
           <Marker
             key={index}
             coordinate={{

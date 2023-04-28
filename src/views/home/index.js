@@ -10,7 +10,7 @@ import {
 import {resetStores, getStores} from '@services/stores';
 import {useNavigation} from '@react-navigation/native';
 import {Card} from '@components';
-import {LogoPng} from '../../assets/logos';
+import {LogoPng, MapaIcon} from '../../assets/logos';
 import Colors from '@colors';
 
 const Home = () => {
@@ -35,6 +35,15 @@ const Home = () => {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{paddingBottom: 80, paddingHorizontal: 30}}>
       <Image source={LogoPng} style={styles.logo} />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() =>
+          navigation.navigate('Map', {
+            location: stores.map(element => element.location),
+          })
+        }>
+        <Text style={styles.textButton}>Ver todas las tiendas</Text>
+      </TouchableOpacity>
       {stores.map(store => (
         <Card key={store.id} style={{height: 'auto'}}>
           <Text style={styles.titleStore}>{store.name}</Text>
@@ -62,6 +71,17 @@ const Home = () => {
               onPress={() =>
                 navigation.navigate('Map', {location: [store.location]})
               }>
+              <Image
+                source={MapaIcon}
+                style={{
+                  width: 170,
+                  height: 120,
+                  backgroundColor: 'red',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: 10,
+                }}
+              />
               <Text>Ver mapa</Text>
             </TouchableOpacity>
           </View>
@@ -181,7 +201,7 @@ const stores = [
     id: 2,
     name: 'Tienda 2',
     location: {
-      latitude: 39.46975,
+      latitude: 39.46995,
       longitude: -0.37739,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
@@ -212,8 +232,8 @@ const stores = [
     name: 'Tienda 3',
 
     location: {
-      latitude: 39.46975,
-      longitude: -0.37739,
+      latitude: 39.44985,
+      longitude: -0.37639,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     },
@@ -242,8 +262,8 @@ const stores = [
     id: 4,
     name: 'Tienda 4',
     location: {
-      latitude: 39.46975,
-      longitude: -0.37739,
+      latitude: 39.46965,
+      longitude: -0.37939,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     },
@@ -272,8 +292,8 @@ const stores = [
     id: 5,
     name: 'Tienda 5',
     location: {
-      latitude: 39.46975,
-      longitude: -0.37739,
+      latitude: 39.46955,
+      longitude: -0.37839,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     },

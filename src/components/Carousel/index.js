@@ -3,7 +3,7 @@ import {StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
 import Carousel from 'react-native-snap-carousel-forked';
 import PropTypes from 'prop-types';
 import {useNavigation} from '@react-navigation/native';
-
+import Colors from '@colors';
 const CarouselStores = ({list, height}) => {
   const navigation = useNavigation();
 
@@ -48,13 +48,13 @@ const styles = StyleSheet.create({
   containerCard: {
     width: Dimensions.get('window').width * 0.9,
     height: 150,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     overflow: 'hidden',
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
       height: 0,

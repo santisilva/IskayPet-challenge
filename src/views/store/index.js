@@ -8,6 +8,7 @@ import {
 import React, {useEffect, useState} from 'react';
 import {useRoute} from '@react-navigation/native';
 import {Card} from '@components';
+import Colors from '@colors';
 
 const Store = () => {
   const [filteredStores, setFilteredStores] = useState([]);
@@ -20,6 +21,8 @@ const Store = () => {
     styles.filterSelector,
     styles.borderAll,
   ]);
+
+
 
   const {params} = useRoute();
 
@@ -88,6 +91,7 @@ const Store = () => {
     }
   };
 
+
   return (
     <ScrollView
       style={styles.container}
@@ -108,13 +112,7 @@ const Store = () => {
             },
           ]}
           onPress={() => setFilterSelected('all')}>
-          <Text
-            style={[
-              styles.filterSelectorText,
-              filterSelected === 'all' && styles.filterSelectorTextSelected,
-            ]}>
-            Todas
-          </Text>
+          <Text style={styles.textFilterSelector}>Todas</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -122,13 +120,7 @@ const Store = () => {
             filterSelected === 'pending' && styleStatusSelected,
           ]}
           onPress={() => setFilterSelected('pending')}>
-          <Text
-            style={[
-              styles.filterSelectorText,
-              filterSelected === 'pending' && styles.filterSelectorTextSelected,
-            ]}>
-            Pendientes
-          </Text>
+          <Text style={styles.textFilterSelector}>Pendientes</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -136,14 +128,7 @@ const Store = () => {
             filterSelected === 'inProgress' && styleStatusSelected,
           ]}
           onPress={() => setFilterSelected('inProgress')}>
-          <Text
-            style={[
-              styles.filterSelectorText,
-              filterSelected === 'inProgress' &&
-                styles.filterSelectorTextSelected,
-            ]}>
-            En proceso
-          </Text>
+          <Text style={styles.textFilterSelector}>En proceso</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -152,13 +137,7 @@ const Store = () => {
             filterSelected === 'done' && styleStatusSelected,
           ]}
           onPress={() => setFilterSelected('done')}>
-          <Text
-            style={[
-              styles.filterSelectorText,
-              filterSelected === 'done' && styles.filterSelectorTextSelected,
-            ]}>
-            Terminadas
-          </Text>
+          <Text style={styles.textFilterSelector}>Terminadas</Text>
         </TouchableOpacity>
       </View>
       {filteredStores.map(task => (
@@ -184,7 +163,7 @@ export default Store;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     paddingTop: 50,
     padding: 40,
   },
@@ -206,15 +185,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 8,
   },
+  textFilterSelector: {
+    fontSize: 14,
+    fontWeight: '400',
+    color: Colors.black,
+  },
+
   buttonFilter: {
     width: '25%',
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 5,
-    backgroundColor: '#e1e1e1',
-    shadowOpacity: 0.25,
+    backgroundColor: Colors.gray,
     marginBottom: 10,
     marginHorizontal: 5,
+    
   },
   containerTask: {
     padding: 5,
@@ -236,6 +221,9 @@ const styles = StyleSheet.create({
   task: {
     borderWidth: 1,
     paddingTop: 0,
+    //la sombra se ve para adentro, la quiero agu
+    backgroundColor: '#ff9f9',
+    shadowColor: Colors.white,
   },
   borderPending: {
     borderColor: 'yellow',

@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import Colors from '@colors';
 
 const Task = () => {
   return (
@@ -15,11 +16,11 @@ const styles = StyleSheet.create({
   container: {
    width: 250,
     height: 150,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     borderRadius: 10,
     padding: 10,
     margin: 10,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
       height: 0,

@@ -5,10 +5,13 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import {resetStores, getStores} from '@services/stores';
 import {useNavigation} from '@react-navigation/native';
 import {Card} from '@components';
+import {LogoPng} from '../../assets/logos';
+import Colors from '@colors';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -30,14 +33,43 @@ const Home = () => {
     <ScrollView
       style={styles.container}
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{paddingBottom: 80,paddingHorizontal:30}}>
+      contentContainerStyle={{paddingBottom: 80, paddingHorizontal: 30}}>
+      <Image source={LogoPng} style={styles.logo} />
       {stores.map(store => (
-        <Card
-          key={store.id}
-          onPress={() => {
-            goToStore(store);
-          }}>
-          <Text style={styles.titleTienda}>{store.name}</Text>
+        <Card key={store.id} style={{height: 'auto'}}>
+          <Text style={styles.titleStore}>{store.name}</Text>
+          <View style={styles.containerTasks}>
+            <View>
+              <Text style={styles.textTasksTitle}>Tareas:</Text>
+              <Text style={styles.textTaskStatus}>
+                {store.tasks.filter(task => task.status === 'Pendiente').length}{' '}
+                pendientes
+              </Text>
+              <Text style={styles.textTaskStatus}>
+                {
+                  store.tasks.filter(task => task.status === 'En proceso')
+                    .length
+                }{' '}
+                en proceso
+              </Text>
+              <Text style={styles.textTaskStatus}>
+                {store.tasks.filter(task => task.status === 'Terminada').length}{' '}
+                terminadas
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={styles.map}
+              onPress={() =>
+                navigation.navigate('Map', {location: [store.location]})
+              }>
+              <Text>Ver mapa</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity
+            onPress={() => goToStore(store)}
+            style={styles.button}>
+            <Text style={styles.textButton}>Ver tienda</Text>
+          </TouchableOpacity>
         </Card>
       ))}
     </ScrollView>
@@ -49,14 +81,56 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     paddingTop: 50,
   },
-
-  titleTienda: {
+  containerTasks: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '90%',
+  },
+  logo: {
+    width: '100%',
+    height: 100,
+    resizeMode: 'contain',
+  },
+  titleStore: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 10,
+    color: Colors.brown,
+    marginBottom: 25,
+  },
+  textTasksTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: Colors.darkBrown,
+  },
+  textTaskStatus: {
+    fontWeight: 'regular',
+    marginTop: 15,
+  },
+  map: {
+    width: 170,
+    height: 120,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  button: {
+    marginTop: 25,
+    height: 48,
+    backgroundColor: Colors.brown,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    alignSelf: 'center',
+    width: '90%',
+  },
+  textButton: {
+    color: Colors.black,
+    fontWeight: '600',
+    fontSize: 16,
   },
 });
 
@@ -64,6 +138,12 @@ const stores = [
   {
     id: 1,
     name: 'Tienda 1',
+    location: {
+      latitude: 39.46975,
+      longitude: -0.37739,
+      latitudeDelta: 0.015,
+      longitudeDelta: 0.0121,
+    },
     tasks: [
       {
         id: 1,
@@ -100,6 +180,12 @@ const stores = [
   {
     id: 2,
     name: 'Tienda 2',
+    location: {
+      latitude: 39.46975,
+      longitude: -0.37739,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    },
     tasks: [
       {
         id: 1,
@@ -124,6 +210,13 @@ const stores = [
   {
     id: 3,
     name: 'Tienda 3',
+
+    location: {
+      latitude: 39.46975,
+      longitude: -0.37739,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    },
     tasks: [
       {
         id: 1,
@@ -148,6 +241,12 @@ const stores = [
   {
     id: 4,
     name: 'Tienda 4',
+    location: {
+      latitude: 39.46975,
+      longitude: -0.37739,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    },
     tasks: [
       {
         id: 1,
@@ -172,6 +271,12 @@ const stores = [
   {
     id: 5,
     name: 'Tienda 5',
+    location: {
+      latitude: 39.46975,
+      longitude: -0.37739,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    },
     tasks: [
       {
         id: 1,

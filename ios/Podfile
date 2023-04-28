@@ -23,8 +23,6 @@ end
 
 target 'IskayPetChallenge' do
 
-  pod 'Boost-for-react-native', :path => '../node_modules/react-native/third-party/boost_1_63_0'
-
   config = use_native_modules!
 
   # Flags change depending on the env values.

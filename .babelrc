@@ -11,7 +11,8 @@
           "@components": "./src/components",
           "@navigator": "./src/navigator",
           "@services": "./src/services",
-          "@views": "./src/views"
+          "@views": "./src/views",
+          "@colors": "./src/assets/styles/colors.js"
         }
       }
     ]

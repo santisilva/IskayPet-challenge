@@ -1,12 +1,9 @@
-import {
-  Text,
-  TouchableOpacity,
-  ActivityIndicator,
-  StyleSheet,
-} from 'react-native';
+import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Colors from '@colors';
+import Lottie from 'lottie-react-native';
+import {PetSpinner} from '@assets/animations';
 
 /**
  * @param  {Function} onPress
@@ -24,7 +21,7 @@ const Button = ({onPress, text, style, textStyle, disabled, loading}) => {
       style={[styles.button, style]}
       disabled={loading || disabled}>
       {loading ? (
-        <ActivityIndicator color="#000" size={20} />
+        <Lottie source={PetSpinner} autoPlay loop />
       ) : (
         <Text style={[styles.textButton, textStyle]}>{text}</Text>
       )}

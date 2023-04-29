@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, Dimensions} from 'react-native';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
-import {PetMap} from '../../assets/logos';
+import {PetMap} from '@assets/logos';
 import {useRoute} from '@react-navigation/native';
 
 const Map = () => {

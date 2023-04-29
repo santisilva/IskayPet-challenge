@@ -23,14 +23,11 @@ export const resetStores = async () => {
 
 export const checkInTask = async (taskId, storeId) => {
   const url = '/checkin';
-  try {
     const body = {
       taskId,
       storeId,
     };
     const response = await apiClient.post(url, body);
     return response.data;
-  } catch (error) {
-    console.log(error.response);
-  }
+
 };

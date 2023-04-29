@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 import Colors from '@colors';
-import {PerroTriste} from '../assets/logos';
+import {PerroTriste} from '@assets/logos';
 const ModalHandler = React.createContext({});
 
 export function ModalHandlerProvider({children}) {

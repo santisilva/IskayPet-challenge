@@ -10,7 +10,8 @@ import {useRoute} from '@react-navigation/native';
 import {Card} from '@components';
 import Colors from '@colors';
 import {Button} from '../../components';
-import { checkInTask } from '../../services/stores';
+import {checkInTask} from '../../services/stores';
+
 
 const Store = () => {
   const [filteredStores, setFilteredStores] = useState([]);
@@ -23,6 +24,8 @@ const Store = () => {
     styles.filterSelector,
     styles.borderAll,
   ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [taskLoading, setTaskLoading] = useState(0);
 
   const {params} = useRoute();
 
@@ -91,11 +94,18 @@ const Store = () => {
     }
   };
 
-  const handleCheckIn = async (taskId) => {
+  const handleCheckIn = async taskId => {
+    setTaskLoading(taskId);
     console.log('Check in');
-    const responseCheckIn = await checkInTask(taskId);
-    console.log(responseCheckIn);
-    
+    setIsLoading(true);
+    try {
+      const responseCheckIn = await checkInTask(taskId);
+      console.log(responseCheckIn);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -105,7 +115,7 @@ const Store = () => {
       showsVerticalScrollIndicator={false}
       bounces={false}>
       <Text style={styles.titleStore}>¡Bienvenido a {params?.store.name}!</Text>
-
+      
       <Text style={styles.titleListTasks}>Tareas</Text>
       <View style={styleFilterSelected}>
         <TouchableOpacity
@@ -157,13 +167,13 @@ const Store = () => {
               {task.name}
             </Text>
             <Text>{task.description}</Text>
-           
           </View>
-            <Button
-              text="CheckIn"
-              onPress={() => handleCheckIn(task.id)}
-              style={styles.buttonCheckIn}
-            />
+          <Button
+            text="CheckIn"
+            onPress={() => handleCheckIn(task.id)}
+            style={styles.buttonCheckIn}
+            loading={isLoading && task.id === taskLoading}
+          />
         </Card>
       ))}
     </ScrollView>

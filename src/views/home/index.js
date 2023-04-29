@@ -10,10 +10,9 @@ import {
 } from 'react-native';
 import {resetStores, getStores} from '@services/stores';
 import {useNavigation} from '@react-navigation/native';
-import {Card} from '@components';
-import {LogoPng, MapaIcon} from '../../assets/logos';
+import {Card,Button} from '@components';
+import {LogoPng, MapaIcon} from '@assets/logos';
 import Colors from '@colors';
-import {Button} from '../../components';
 
 const Home = () => {
   const navigation = useNavigation();

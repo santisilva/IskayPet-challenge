@@ -4,12 +4,28 @@ import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 import {PetMap} from '@assets/logos';
 import {useRoute} from '@react-navigation/native';
+import Geolocation from 'react-native-geolocation-service';
 
 const Map = () => {
 
   const {params} = useRoute();
   console.log(params.location);
 
+  useEffect(() => {
+    Geolocation.getCurrentPosition(
+      position => {
+        console.log(position);
+      },
+      error => {
+        console.log(error);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 1000
+      }
+    );
+  }, []);
 
   return (
     <View style={{flex: 1, justifyContent: 'center'}}>

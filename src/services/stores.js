@@ -2,9 +2,11 @@ import {apiClient} from '@api';
 
 export const getStores = async () => {
   //const url = 'stores';
-  const url = '/65709c03-dfb1-4b59-864f-adacdf8594d3';
+
+  const url = 'f6b8e9cd-3c19-499a-9227-8d64ae57b1ce';
   try {
     const response = await apiClient.get(url);
+    console.log('asdasdasda',response.data);
     return response.data;
   } catch (error) {
     console.log(error);

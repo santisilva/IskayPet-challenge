@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -10,25 +10,37 @@ import {
 } from 'react-native';
 import {resetStores, getStores} from '@services/stores';
 import {useNavigation} from '@react-navigation/native';
-import {Card,Button} from '@components';
+import {Card, Button} from '@components';
 import {LogoPng, MapaIcon} from '@assets/logos';
 import Colors from '@colors';
+import {PetSpinner} from '@assets/animations';
+import Lottie from 'lottie-react-native';
 
 const Home = () => {
   const navigation = useNavigation();
 
+
+  const [stores, setStores] = useState(null);
+
   useEffect(() => {
-    
     resetStores();
     getStores().then(response => {
-      console.log(response.data);
+      setStores(response);
     });
-    
+   
   }, []);
 
   const goToStore = store => {
     navigation.navigate('Store', {store});
   };
+
+  if (!stores) {
+    return (
+      <View style={styles.container}>
+        <Lottie source={PetSpinner} autoPlay loop />
+      </View>
+    );
+  }
 
   return (
     <ScrollView
@@ -150,9 +162,10 @@ const styles = StyleSheet.create({
   },
   buttonSeeAllStores: {
     alignSelf: 'center',
+    marginBottom: 15,
   },
 });
-
+/*
 const stores = [
   {
     id: 1,
@@ -324,3 +337,4 @@ const stores = [
     ],
   },
 ];
+*/

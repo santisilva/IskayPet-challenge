@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "name": "IskayPet Valencia",
+    "location": {
+      "latitude": 39.46975,
+      "longitude": -0.37739,
+      "latitudeDelta": 0.015,
+      "longitudeDelta": 0.0121
+    },
+    "tasks": [
+      {
+        "id": 1,
+        "name": "ConstrucciÃ³n de objetivos",
+        "description": "Para la construccion de este objetivo se debe de tener en cuenta los siguientes puntos",
+        "status": "Pendiente"
+      },
+      {
+        "id": 2,
+        "name": "Pago de impuestos",
+        "description": "Para el pago de impuestos se debe de tener en cuenta los activos y ver los impuestos que se deben de pagar",
+        "status": "En proceso"
+      },
+      {
+        "id": 3,
+        "name": "Tarea 3",
+        "description": "sam lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum",
+        "status": "Terminada"
+      },
+      {
+        "id": 4,
+        "name": "Tarea 4",
+        "description": "Descripcion de la tarea 4",
+        "status": "Pendiente"
+      },
+      {
+        "id": 5,
+        "name": "Tarea 5",
+        "description": "Descripcion de la tarea 5",
+        "status": "Pendiente"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Kiwoko Valencia",
+    "location": {
+      "latitude": 39.46995,
+      "longitude": -0.37739,
+      "latitudeDelta": 0.0922,
+      "longitudeDelta": 0.0421
+    },
+    "tasks": [
+      {
+        "id": 1,
+        "name": "Tarea 1",
+        "description": "Descripcion de la tarea 1",
+        "status": "Pendiente"
+      },
+      {
+        "id": 2,
+        "name": "Tarea 2",
+        "description": "Descripcion de la tarea 2",
+        "status": "Pendiente"
+      },
+      {
+        "id": 3,
+        "name": "Tarea 3",
+        "description": "Descripcion de la tarea 3",
+        "status": "Pendiente"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Tienda 3",
+    "location": {
+      "latitude": 39.44985,
+      "longitude": -0.37639,
+      "latitudeDelta": 0.0922,
+      "longitudeDelta": 0.0421
+    },
+    "tasks": [
+      {
+        "id": 1,
+        "name": "Tarea 1",
+        "description": "sam lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor inc'id''id'unt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cup'id'atat non pro'id'ent sunt in culpa qui officia deserunt mollit anim 'id' est laborum",
+        "status": "Pendiente"
+      },
+      {
+        "id": 2,
+        "name": "Tarea 2",
+        "description": "Descripcion de la tarea 2",
+        "status": "Pendiente"
+      },
+      {
+        "id": 3,
+        "name": "Tarea 3",
+        "description": "Descripcion de la tarea 3",
+        "status": "Pendiente"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Tienda 4",
+    "location": {
+      "latitude": 39.46965,
+      "longitude": -0.37939,
+      "latitudeDelta": 0.0922,
+      "longitudeDelta": 0.0421
+    },
+    "tasks": [
+      {
+        "id": 1,
+        "name": "Tarea 1",
+        "description": "Descripcion de la tarea 1",
+        "status": "Pendiente"
+      },
+      {
+        "id": 2,
+        "name": "Tarea 2",
+        "description": "Descripcion de la tarea 2",
+        "status": "Pendiente"
+      },
+      {
+        "id": 3,
+        "name": "Tarea 3",
+        "description": "Descripcion de la tarea 3",
+        "status": "Pendiente"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Tienda 5",
+    "location": {
+      "latitude": 39.46955,
+      "longitude": -0.37839,
+      "latitudeDelta": 0.0922,
+      "longitudeDelta": 0.0421
+    },
+    "tasks": [
+      {
+        "id": 1,
+        "name": "Tarea 1",
+        "description": "Descripcion de la tarea 1",
+        "status": "Pendiente"
+      },
+      {
+        "id": 2,
+        "name": "Tarea 2",
+        "description": "Descripcion de la tarea 2",
+        "status": "Pendiente"
+      },
+      {
+        "id": 3,
+        "name": "Tarea 3",
+        "description": "Descripcion de la tarea 3",
+        "status": "Pendiente"
+      }
+    ]
+  }
+]

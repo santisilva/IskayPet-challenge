@@ -54,7 +54,17 @@ const Home = () => {
             location: stores.map(element => element.location),
           })
         }
-        text="Ver todas las tiendas"
+        text="Ver mapa de tiendas"
+        style={styles.buttonSeeAllStores}
+      />
+      <Button
+        onPress={() =>
+          navigation.navigate('Map', {
+            location: stores.map(element => element.location),
+            nearestRequest: true,
+          })
+        }
+        text="Ver tienda más cercana"
         style={styles.buttonSeeAllStores}
       />
       {stores.map(store => (

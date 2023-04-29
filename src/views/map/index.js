@@ -9,6 +9,8 @@ import {request, PERMISSIONS} from 'react-native-permissions';
 import geolib from 'geolib'; //no funciono
 import turf from '@turf/turf'; //no funciono
 import geodist from 'geodist'; // si funciono
+import {PetSpinner} from '@assets/animations';
+import Lottie from 'lottie-react-native';
 
 const Map = () => {
   const [myPosition, setMyPosition] = useState(null);
@@ -103,7 +105,7 @@ const Map = () => {
 
   return (
     <View style={{flex: 1, justifyContent: 'center'}}>
-      {seeMap && (
+      {seeMap ? (
         <MapView
           style={{width: '100%', height: Dimensions.get('window').height - 100}}
           initialRegion={{
@@ -143,7 +145,10 @@ const Map = () => {
             ))
           )}
         </MapView>
-      )}
+      ): <Lottie source={PetSpinner} autoPlay loop />
+    
+    }
+      
     </View>
   );
 };

@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
   textTaskStatus: {
     fontWeight: 'regular',
     marginTop: 15,
+    color: Colors.darkBrown,
   },
   map: {
     width: 170,

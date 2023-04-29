@@ -105,7 +105,7 @@ const Map = () => {
     <View style={{flex: 1, justifyContent: 'center'}}>
       {seeMap && (
         <MapView
-          style={{width: '100%', height: Dimensions.get('window').height - 200}}
+          style={{width: '100%', height: Dimensions.get('window').height - 100}}
           initialRegion={{
             latitude: myPosition.latitude,
             longitude: myPosition.longitude,

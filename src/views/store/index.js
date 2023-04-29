@@ -160,16 +160,18 @@ const Store = () => {
         <Card style={[styles.task, taskstatus(task.status)]}>
           <View
             style={[styles.containerTask, taskContainerStatus(task.status)]}>
-            <Text>{task.status}</Text>
+            <Text style={styles.textStatus}>{task.status}</Text>
           </View>
           <View style={styles.body}>
             <Text style={styles.titleTask} key={task.id}>
               {task.name}
             </Text>
-            <Text>{task.description}</Text>
+            <Text
+              style={styles.descriptionTask}
+            >{task.description}</Text>
           </View>
           <Button
-            text="CheckIn"
+            text="Check in"
             onPress={() => handleCheckIn(task.id)}
             style={styles.buttonCheckIn}
             loading={isLoading && task.id === taskLoading}
@@ -191,18 +193,21 @@ const styles = StyleSheet.create({
   containerScroll: {
     alignItems: 'center',
     paddingBottom: 80,
-    paddingHorizontal: 40,
+    paddingHorizontal: 20,
   },
   titleStore: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: Colors.darkBrown,
+
   },
   titleListTasks: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
     alignSelf: 'stretch',
+    color: Colors.darkBrown,
   },
   filterSelector: {
     flexDirection: 'row',
@@ -251,6 +256,9 @@ const styles = StyleSheet.create({
     minHeight: 200,
     justifyContent: 'space-between',
   },
+  textStatus: {
+    color: Colors.darkBrown,
+  },
   borderPending: {
     borderColor: 'yellow',
   },
@@ -264,11 +272,17 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     padding: 10,
   },
+  
 
   titleTask: {
     fontWeight: 'bold',
     fontSize: 16,
     marginBottom: 2,
+    color: Colors.darkBrown,
+  },
+  descriptionTask: {
+    fontSize: 14,
+    color: Colors.darkBrown,
   },
   buttonCheckIn: {
     alignSelf: 'center',

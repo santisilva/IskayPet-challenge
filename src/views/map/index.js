@@ -16,7 +16,6 @@ const Map = () => {
       <MapView
         style={{width: '100%', height: Dimensions.get('window').height - 200}}
         initialRegion={{
-          //valencia
           latitude: 39.46975,
           longitude: -0.37739,
           latitudeDelta: 0.015,

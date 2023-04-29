@@ -3,7 +3,7 @@ const Colors = Object.freeze({
   darkBrown: '#4f3a41',
   white: '#fff',
   black: '#000',
-  gray: '#f1f1f1',
+  gray: '#e7dedd',
   lightGray: '#f1f1f1',
 
 });

@@ -9,6 +9,8 @@ import React, {useEffect, useState} from 'react';
 import {useRoute} from '@react-navigation/native';
 import {Card} from '@components';
 import Colors from '@colors';
+import {Button} from '../../components';
+import { checkInTask } from '../../services/stores';
 
 const Store = () => {
   const [filteredStores, setFilteredStores] = useState([]);
@@ -21,8 +23,6 @@ const Store = () => {
     styles.filterSelector,
     styles.borderAll,
   ]);
-
-
 
   const {params} = useRoute();
 
@@ -91,11 +91,17 @@ const Store = () => {
     }
   };
 
+  const handleCheckIn = async (taskId) => {
+    console.log('Check in');
+    const responseCheckIn = await checkInTask(taskId);
+    console.log(responseCheckIn);
+    
+  };
 
   return (
     <ScrollView
       style={styles.container}
-      contentContainerStyle={{alignItems: 'center', paddingBottom: 80}}
+      contentContainerStyle={styles.containerScroll}
       showsVerticalScrollIndicator={false}
       bounces={false}>
       <Text style={styles.titleStore}>¡Bienvenido a {params?.store.name}!</Text>
@@ -151,7 +157,13 @@ const Store = () => {
               {task.name}
             </Text>
             <Text>{task.description}</Text>
+           
           </View>
+            <Button
+              text="CheckIn"
+              onPress={() => handleCheckIn(task.id)}
+              style={styles.buttonCheckIn}
+            />
         </Card>
       ))}
     </ScrollView>
@@ -165,7 +177,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white,
     paddingTop: 50,
-    padding: 40,
+  },
+  containerScroll: {
+    alignItems: 'center',
+    paddingBottom: 80,
+    paddingHorizontal: 40,
   },
   titleStore: {
     fontSize: 20,
@@ -199,7 +215,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.gray,
     marginBottom: 10,
     marginHorizontal: 5,
-    
   },
   containerTask: {
     padding: 5,
@@ -207,7 +222,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 5,
   },
   allBackground: {
-    backgroundColor: '#fa9999',
+    backgroundColor: Colors.brown,
   },
   pendingBackground: {
     backgroundColor: '#ffff005a',
@@ -221,9 +236,10 @@ const styles = StyleSheet.create({
   task: {
     borderWidth: 1,
     paddingTop: 0,
-    //la sombra se ve para adentro, la quiero agu
-    backgroundColor: '#ff9f9',
-    shadowColor: Colors.white,
+    backgroundColor: '#fff',
+    height: 'auto',
+    minHeight: 200,
+    justifyContent: 'space-between',
   },
   borderPending: {
     borderColor: 'yellow',
@@ -243,5 +259,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     marginBottom: 2,
+  },
+  buttonCheckIn: {
+    alignSelf: 'center',
+    marginTop: 15,
   },
 });

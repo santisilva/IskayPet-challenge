@@ -6,23 +6,25 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  ImageBackground,
 } from 'react-native';
 import {resetStores, getStores} from '@services/stores';
 import {useNavigation} from '@react-navigation/native';
 import {Card} from '@components';
 import {LogoPng, MapaIcon} from '../../assets/logos';
 import Colors from '@colors';
+import {Button} from '../../components';
 
 const Home = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    /*
+    
     resetStores();
     getStores().then(response => {
       console.log(response.data);
     });
-    */
+    
   }, []);
 
   const goToStore = store => {
@@ -33,17 +35,17 @@ const Home = () => {
     <ScrollView
       style={styles.container}
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{paddingBottom: 80, paddingHorizontal: 30}}>
+      contentContainerStyle={styles.containerScroll}>
       <Image source={LogoPng} style={styles.logo} />
-      <TouchableOpacity
-        style={styles.button}
+      <Button
         onPress={() =>
           navigation.navigate('Map', {
             location: stores.map(element => element.location),
           })
-        }>
-        <Text style={styles.textButton}>Ver todas las tiendas</Text>
-      </TouchableOpacity>
+        }
+        text="Ver todas las tiendas"
+        style={styles.buttonSeeAllStores}
+      />
       {stores.map(store => (
         <Card key={store.id} style={{height: 'auto'}}>
           <Text style={styles.titleStore}>{store.name}</Text>
@@ -71,25 +73,16 @@ const Home = () => {
               onPress={() =>
                 navigation.navigate('Map', {location: [store.location]})
               }>
-              <Image
-                source={MapaIcon}
-                style={{
-                  width: 170,
-                  height: 120,
-                  backgroundColor: 'red',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  borderRadius: 10,
-                }}
-              />
-              <Text>Ver mapa</Text>
+              <ImageBackground source={MapaIcon} style={styles.imageMap}>
+                <Text style={styles.buttonSeeMap}>Ver en mapa</Text>
+              </ImageBackground>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity
+          <Button
             onPress={() => goToStore(store)}
-            style={styles.button}>
-            <Text style={styles.textButton}>Ver tienda</Text>
-          </TouchableOpacity>
+            text="Ver tienda"
+            style={styles.buttonSeeStore}
+          />
         </Card>
       ))}
     </ScrollView>
@@ -103,6 +96,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white,
     paddingTop: 50,
+  },
+  containerScroll: {
+    paddingBottom: 80,
+    paddingHorizontal: 30,
   },
   containerTasks: {
     flexDirection: 'row',
@@ -132,32 +129,35 @@ const styles = StyleSheet.create({
   map: {
     width: 170,
     height: 120,
-    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  imageMap: {
+    width: 170,
+    height: 120,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
   },
-  button: {
+  buttonSeeStore: {
     marginTop: 25,
-    height: 48,
-    backgroundColor: Colors.brown,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    alignSelf: 'center',
-    width: '90%',
   },
-  textButton: {
+  buttonSeeMap: {
     color: Colors.black,
     fontWeight: '600',
-    fontSize: 16,
+    fontSize: 18,
+  },
+  buttonSeeAllStores: {
+    alignSelf: 'center',
   },
 });
 
 const stores = [
   {
     id: 1,
-    name: 'Tienda 1',
+    name: 'IskayPet Valencia',
     location: {
       latitude: 39.46975,
       longitude: -0.37739,
@@ -167,20 +167,24 @@ const stores = [
     tasks: [
       {
         id: 1,
-        name: 'Tarea 1',
-        description: 'Descripcion de la tarea 1',
+        name: 'Construcción de objetivos',
+        description:
+          'Para la construccion de este objetivo se debe de tener en cuenta los siguientes puntos',
         status: 'Pendiente',
       },
       {
         id: 2,
-        name: 'Tarea 2',
-        description: 'Descripcion de la tarea 2',
+        name: 'Pago de impuestos',
+        description:
+          'Para el pago de impuestos se debe de tener en cuenta los activos y ver los impuestos que se deben de pagar',
         status: 'En proceso',
       },
       {
         id: 3,
         name: 'Tarea 3',
-        description: 'Descripcion de la tarea 3',
+        description:
+          'sam lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum',
+
         status: 'Terminada',
       },
       {
@@ -199,7 +203,7 @@ const stores = [
   },
   {
     id: 2,
-    name: 'Tienda 2',
+    name: 'Kiwoko Valencia',
     location: {
       latitude: 39.46995,
       longitude: -0.37739,
@@ -241,7 +245,9 @@ const stores = [
       {
         id: 1,
         name: 'Tarea 1',
-        description: 'Descripcion de la tarea 1',
+        //descripcion de 500 caracteres
+        description:
+          'sam lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum',
         status: 'Pendiente',
       },
       {

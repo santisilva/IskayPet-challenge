@@ -12,7 +12,8 @@
           "@navigator": "./src/navigator",
           "@services": "./src/services",
           "@views": "./src/views",
-          "@colors": "./src/assets/styles/colors.js"
+          "@colors": "./src/assets/styles/colors.js",
+          "@context": "./src/context"
         }
       }
     ]
